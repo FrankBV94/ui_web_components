@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Text Typing Effect</title>
+  </head>
+  <body>
+    <div class="typing-container">
+      <span id="typing-text"></span>
+      <span class="typing-cursor">|</span>
+    </div>
+    <script>
+      const textArray = ["Aloha...", "Hello...", "Hi...", "How are you..."];
+      const typingSpeed = 150;
+      const typingDelay = 2000;
+      let textIndex = 0;
+      let chatIndex = 0;
+      const typingTextElement = document.getElementById("typing-text");
+
+      function typeText() {
+        if (chatIndex < textArray[textIndex].length) {
+          typingTextElement.textContent +=
+            textArray[textIndex].charAt(chatIndex);
+          chatIndex++;
+          setTimeout(typeText, typingSpeed);
+        } else {
+          setTimeout(deleteText, typingDelay);
+        }
+      }
+
+      function deleteText() {
+        if (chatIndex > 0) {
+          typingTextElement.textContent = textArray[textIndex].substring(
+            0,
+            chatIndex - 1
+          );
+          chatIndex--;
+          setTimeout(deleteText, typingSpeed / 2);
+        } else {
+          textIndex = (textIndex + 1) % textArray.length;
+          setTimeout(typeText, typingSpeed);
+        }
+      }
+
+      typeText();
+    </script>
+  </body>
+</html>
