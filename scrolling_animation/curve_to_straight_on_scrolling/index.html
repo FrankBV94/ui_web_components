@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Curve to Straight on Scrolling</title>
+  </head>
+  <body>
+    <section>
+      <span class="curve"></span>
+    </section>
+    <script>
+      let curve = document.querySelector(".curve");
+      window.addEventListener("scroll", () => {
+        let value = 1 + window.scrollY / -500;
+        curve.style.transform = `scaleY(${value})`;
+      });
+    </script>
+  </body>
+</html>
