@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Cursor Move Effect</title>
+  </head>
+  <body>
+    <script>
+      document.addEventListener("mousemove", function (event) {
+        let body = document.querySelector("body");
+        let bubbles = document.createElement("span");
+        bubbles.style.left = -75 + event.offsetX + "px";
+        bubbles.style.top = -75 + event.offsetY + "px";
+        body.appendChild(bubbles);
+        setTimeout(function () {
+          bubbles.remove();
+        }, 1500);
+      });
+    </script>
+  </body>
+</html>
